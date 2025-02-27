@@ -4,6 +4,7 @@ runTitle();
 warmup2();
 warmup2b();
 warmup2c();
+warmup3();
 
 function warmup1() {
 	console.log("Exercise week 1");
@@ -77,7 +78,26 @@ function warmup2c() {
 }
 
 function warmup3() {
+	//log JSON
 	let student = getStudentJSON();
+	console.log(student);
+	/*console.log(JSON); doet niks*/
+
+	//zet JSON om in een JavaScript object
+	const studentObject = JSON.parse(student);
+	console.log(studentObject);
+
+	document.querySelector("#button-3b").addEventListener("click", function () {
+		//html leeg maken
+		let html = "";
+
+		//html aanmaken 
+		html += `<h2>Naam: ${studentObject.firstname} ${studentObject.name}</h2>
+		<h2>Leeftijd:${studentObject.age}</h2>`;
+
+		//print html op scherm 
+		document.querySelector("#content-3").innerHTML = html;
+	});
 }
 
 function warmup4() {
