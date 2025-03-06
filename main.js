@@ -5,6 +5,7 @@ warmup2();
 warmup2b();
 warmup2c();
 warmup3();
+warmup4();
 
 function warmup1() {
 	console.log("Exercise week 1");
@@ -91,17 +92,39 @@ function warmup3() {
 		//html leeg maken
 		let html = "";
 
-		//html aanmaken 
+		//html aanmaken
 		html += `<h2>Naam: ${studentObject.firstname} ${studentObject.name}</h2>
 		<h2>Leeftijd:${studentObject.age}</h2>`;
 
-		//print html op scherm 
+		//print html op scherm
 		document.querySelector("#content-3").innerHTML = html;
 	});
 }
 
 function warmup4() {
 	let main, min, max;
+	const url =
+		"https://api.openweathermap.org/data/2.5/weather?q=Brussels&APPID=d7b955c4c268fe54649d6f0d702b39d1&units=metric";
+
+	document.querySelector("#button-4a").addEventListener("click", function () {
+		fetch(url)
+			.then(function (response) {
+				return response.json();
+			})
+			.then(function (data) {
+				console.log(data);
+
+				document
+					.querySelector("#button-4b")
+					.addEventListener("click", function (event) {
+						let html = "";
+						html += `<h2>Temp: ${data.main.temp}</h2>
+						<h2>Min: ${data.main.temp_min}</h2>
+						<h2>Max: ${data.main.temp_max}</h2>`;
+						document.querySelector("#content-4").innerHTML = html;
+					});
+			});
+	});
 }
 
 function warmup5() {}
